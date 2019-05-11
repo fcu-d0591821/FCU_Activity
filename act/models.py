@@ -1,6 +1,5 @@
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
@@ -8,7 +7,7 @@ from django.contrib.auth.models import AbstractUser, Group
 class ExtendUser(AbstractUser):
     studentId = models.CharField(max_length=8)
     nickName = models.CharField(max_length=6)
-    # role = models.CharField(max_length=6, choices=(('stu', '一般學生'), ('staff', '幹部'), ('admin', '管理者')))
+    # role stu 一般學生 staff 幹部 admin 管理者
 
 class Activity(models.Model):
     title = models.CharField(max_length=50)
@@ -17,3 +16,4 @@ class Activity(models.Model):
     description = models.CharField(max_length=200)
     type = models.CharField(max_length=10)
     poster = models.ImageField(upload_to='upload', blank=True, default='upload/default.jpg')
+    

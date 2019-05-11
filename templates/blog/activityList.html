@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <title>活動列表</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+
+<body>
+    <div class="page-header">
+        <h1><a href="">首頁</a></h1>
+        <h1><a href="/signup">註冊</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for activity in activities %}
+                <div class="post">
+                    <div class="date">
+                        <p>發佈時間: {{ activity.date }}</p>
+                    </div>
+                    <h1><a href="activity/{{ activity.id }}">{{ activity.title }}</a></h1>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
