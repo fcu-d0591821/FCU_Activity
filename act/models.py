@@ -7,7 +7,6 @@ from django.contrib.auth.models import AbstractUser
 class ExtendUser(AbstractUser):
     studentId = models.CharField(max_length=8)
     nickName = models.CharField(max_length=6)
-    # role stu 一般學生 staff 幹部 admin 管理者
 
 class Activity(models.Model):
     title = models.CharField(max_length=50)
