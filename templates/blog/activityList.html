@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link href="https://unpkg.com/@fullcalendar/core@4.1.0/main.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@fullcalendar/daygrid@4.1.0/main.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var calendarEl = document.getElementById("calendar");
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ["dayGrid"],
+                events: "/getActivity"
+            });
+            calendar.render();
+      });
+      </script>
 </head>
 
 <body>
@@ -15,16 +29,7 @@
     </div>
     <div class="content container">
         <div class="row">
-            <div class="col-md-8">
-                {% for activity in activities %}
-                <div class="post">
-                    <div class="date">
-                        <p>發佈時間: {{ activity.date }}</p>
-                    </div>
-                    <h1><a href="activity/{{ activity.id }}">{{ activity.title }}</a></h1>
-                </div>
-                {% endfor %}
-            </div>
+            <div class="col-md-12" id="calendar"></div>
         </div>
     </div>
 </body>

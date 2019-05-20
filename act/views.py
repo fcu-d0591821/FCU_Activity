@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import generic
+from django.utils.dateparse import parse_datetime
 from .models import ExtendUser, Activity
 from .forms import ExtendUserCreationForm, ActivityCreateForm
 
@@ -21,8 +22,21 @@ def index(request):
     return redirect('/activity')
 
 def activity_list(request):
-    activity = Activity.objects.order_by('date')
-    return render(request, 'blog/activityList.html', {'activities': activity})
+    return render(request, 'blog/activityList.html')
+
+def get_activity(request):
+    start = parse_datetime(request.GET.get("start"))
+    end = parse_datetime(request.GET.get("end"))
+    activities = Activity.objects.filter(date__range=[start, end])
+    json = []
+    for activity in activities:
+        json.append({
+            "start": activity.date,
+            "end": None,
+            "title": activity.title,
+            "url": f"/activity/{activity.id}"
+        })
+    return JsonResponse(json, safe=False)
 
 def activity_detail(request, aid):
     activity = Activity.objects.get(id=aid)
