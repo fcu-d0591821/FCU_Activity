@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link href="https://unpkg.com/@fullcalendar/core@4.1.0/main.min.css" rel="stylesheet">
     <link href="https://unpkg.com/@fullcalendar/daygrid@4.1.0/main.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/@fullcalendar/bootstrap@4.1.0/main.min.css' rel='stylesheet'>
+    <link href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' rel='stylesheet' crossorigin='anonymous'>
     <script src="https://unpkg.com/@fullcalendar/core@4.1.0/main.min.js"></script>
     <script src="https://unpkg.com/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src='https://unpkg.com/@fullcalendar/bootstrap@4.1.0/main.min.js'></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var calendarEl = document.getElementById("calendar");
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ["dayGrid"],
+                plugins: ["dayGrid", "bootstrap"],
+                themeSystem: "bootstrap",
+                locale: "zh-tw",
                 events: "/getActivity"
             });
             calendar.render();
