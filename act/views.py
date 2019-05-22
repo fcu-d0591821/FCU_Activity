@@ -9,7 +9,7 @@ from .forms import ExtendUserCreationForm, ActivityCreateForm
 
 # Create your views here.
 
-class UserCreate(generic.CreateView):
+class UserCreate(generic.CreateView): # pylint: disable=too-many-ancestors
     model = ExtendUser
     form_class = ExtendUserCreationForm
     template_name = "registration/extenduser_form.html"
@@ -27,12 +27,12 @@ def activity_list(request):
 def get_activity(request):
     start = parse_datetime(request.GET.get("start"))
     end = parse_datetime(request.GET.get("end"))
-    activities = Activity.objects.filter(date__range=[start, end])
+    activities = Activity.objects.filter(start__lte=end, end__gte=start)
     json = []
     for activity in activities:
         json.append({
-            "start": activity.date,
-            "end": None,
+            "start": activity.start,
+            "end": activity.end,
             "title": activity.title,
             "url": f"/activity/{activity.id}"
         })

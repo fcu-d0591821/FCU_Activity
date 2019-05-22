@@ -10,7 +10,7 @@ class ExtendUser(AbstractUser):
 class Activity(models.Model):
     title = models.CharField(max_length=50)
     author = models.ForeignKey(ExtendUser, on_delete='CASCADE')
-    date = models.DateTimeField()
+    start = models.DateTimeField()
+    end = models.DateTimeField()
     description = models.CharField(max_length=200)
-    type = models.CharField(max_length=10)
     poster = models.ImageField(upload_to='upload', blank=True, default='upload/default.jpg')

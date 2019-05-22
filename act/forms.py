@@ -25,4 +25,4 @@ class ActivityAdminForm(forms.ModelForm):
 class ActivityCreateForm(forms.ModelForm):
     class Meta:
         model = Activity
-        fields = ('title', 'date', 'description', 'type', 'poster')
+        fields = ('title', 'start', 'end', 'description', 'poster')

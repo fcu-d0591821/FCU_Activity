@@ -1,1 +1,1 @@
-default_app_config = 'act.apps.ActConfig'
+default_app_config = 'act.apps.ActConfig' # pylint: disable=invalid-name
