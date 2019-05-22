@@ -16,7 +16,7 @@ class UserCreate(generic.CreateView): # pylint: disable=too-many-ancestors
 
     def get_success_url(self):
         messages.success(self.request, '帳戶已創立')
-        return redirect('/login')
+        return '/login'
 
 def index(request):
     return redirect('/activity')
