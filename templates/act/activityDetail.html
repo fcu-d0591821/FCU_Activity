@@ -1,0 +1,17 @@
+{% extends 'act/base.html' %}
+{% block title %}{{ activity.title }}{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">{{ activity.title }}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ activity.start }} - {{ activity.end }}</h5>
+                <p class="card-text">{{ activity.description }}</p>
+                <p class="card-text text-right"><small class="text-muted">Post by {{ activity.author }}</small></p>
+            </div>
+            <img class="card-img-bottom" src="/{{ activity.poster }}">
+        </div>
+    </div>
+</div>
+{% endblock %}

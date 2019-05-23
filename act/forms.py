@@ -4,6 +4,17 @@ from django.db.models import EmailField
 from django.utils.translation import ugettext_lazy as _
 from .models import ExtendUser, Activity
 
+DATE_ATTR = {
+    'type': 'datetime-local',
+    'class': 'form-control'
+}
+TEXT_ATTR = {
+    'class': 'form-control'
+}
+FILE_ATTR = {
+    'class': 'form-control-file'
+}
+
 class ExtendUserAdminForm(forms.ModelForm):
     class Meta:
         model = ExtendUser
@@ -26,3 +37,17 @@ class ActivityCreateForm(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ('title', 'start', 'end', 'description', 'poster')
+        labels = {
+            'title': '標題',
+            'start': '開始時間',
+            'end': '結束時間',
+            'description': '活動敘述',
+            'poster': '海報'
+        }
+        widgets = {
+            'title': forms.TextInput(TEXT_ATTR),
+            'start': forms.DateTimeInput(DATE_ATTR, ['%Y-%m-%dT%H:%M']),
+            'end': forms.DateTimeInput(DATE_ATTR, ['%Y-%m-%dT%H:%M']),
+            'description': forms.Textarea(TEXT_ATTR),
+            'poster': forms.FileInput()
+        }

@@ -22,7 +22,7 @@ def index(request):
     return redirect('/activity')
 
 def activity_list(request):
-    return render(request, 'blog/activityList.html')
+    return render(request, 'act/activityList.html')
 
 def get_activity(request):
     start = parse_datetime(request.GET.get("start"))
@@ -40,7 +40,7 @@ def get_activity(request):
 
 def activity_detail(request, aid):
     activity = Activity.objects.get(id=aid)
-    return render(request, 'blog/activityDetail.html', {'activity': activity})
+    return render(request, 'act/activityDetail.html', {'activity': activity})
 
 @login_required
 def activity_create(request):
@@ -53,7 +53,7 @@ def activity_create(request):
             return redirect('/activity')
         return HttpResponse("Error")
     form = ActivityCreateForm()
-    return render(request, 'blog/activityCreate.html', {'form': form})
+    return render(request, 'act/activityCreate.html', {'form': form})
 
 @login_required
 def activity_delete(request, aid):
@@ -76,5 +76,5 @@ def activity_edit(request, aid):
                 return redirect(activity_detail, id)
             return HttpResponse("Error")
         form = ActivityCreateForm(instance=activity)
-        return render(request, 'blog/activityCreate.html', {'form': form})
+        return render(request, 'act/activityCreate.html', {'form': form})
     return HttpResponse("Your are not author.")
