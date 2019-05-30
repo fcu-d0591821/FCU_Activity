@@ -6,11 +6,11 @@
         <div class="card">
             <div class="card-header">{{ activity.title }}</div>
             <div class="card-body">
-                <h5 class="card-title">{{ activity.start }} - {{ activity.end }}</h5>
+                <h5 class="card-title">{{ activity.start|date:'Y/m/d H:i' }} - {{ activity.end|date:'Y/m/d H:i' }}</h5>
                 <p class="card-text">{{ activity.description }}</p>
                 <p class="card-text text-right"><small class="text-muted">Post by {{ activity.author }}</small></p>
             </div>
-            <img class="card-img-bottom" src="/{{ activity.poster }}">
+            <img class="card-img-bottom" src="{{ activity.poster.url }}">
         </div>
     </div>
 </div>

@@ -13,4 +13,4 @@ class Activity(models.Model):
     start = models.DateTimeField()
     end = models.DateTimeField()
     description = models.CharField(max_length=200)
-    poster = models.ImageField(upload_to='upload', blank=True, default='upload/default.jpg')
+    poster = models.ImageField(upload_to='', blank=True, default='default.jpg')

@@ -46,8 +46,8 @@ class ActivityCreateForm(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(TEXT_ATTR),
-            'start': forms.DateTimeInput(DATE_ATTR, ['%Y-%m-%dT%H:%M']),
-            'end': forms.DateTimeInput(DATE_ATTR, ['%Y-%m-%dT%H:%M']),
+            'start': forms.DateTimeInput(DATE_ATTR),
+            'end': forms.DateTimeInput(DATE_ATTR),
             'description': forms.Textarea(TEXT_ATTR),
-            'poster': forms.FileInput()
+            'poster': forms.FileInput(FILE_ATTR)
         }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand" href="">首頁</a>
+    <a class="navbar-brand" href="/activity">首頁</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,14 +7,31 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            {% if perms.act.add_activity %}
-            <li class="nav-item">
-                <a class="nav-link" href="/activity/create">新增活動</a>
-            </li>
+            {% if user.is_authenticated %} 
+                {% if perms.act.add_activity %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/activity/create">新增活動</a>
+                </li>
+                {% endif %}
+                {% if user == activity.author or is_admin%}
+                    {% if perms.act.change_activity %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/activity/{{ activity.id }}/edit">修改此活動</a>
+                    </li>
+                    {% endif %}
+                    {% if perms.act.delete_activity %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/activity/{{ activity.id }}/delete">刪除此活動</a>
+                    </li>
+                    {% endif %}
+                {% endif %}
             {% endif %}
         </ul>
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" aria-disabled="true">{{ user }}</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">登出</a>
             </li>

@@ -10,7 +10,7 @@ urlpatterns = [
     path('activity/create', views.activity_create),
     path('activity/<aid>', views.activity_detail),
     path('activity/<aid>/delete', views.activity_delete),
-    path('activity/<aid>/modify', views.activity_edit),
+    path('activity/<aid>/edit', views.activity_edit),
     path('getActivity', views.get_activity),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,13 +10,25 @@
 <script src="https://unpkg.com/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
 <script src='https://unpkg.com/@fullcalendar/bootstrap@4.1.0/main.min.js'></script>
 <script>
+    function randomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     document.addEventListener("DOMContentLoaded", function () {
         var calendarEl = document.getElementById("calendar");
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ["dayGrid", "bootstrap"],
             themeSystem: "bootstrap",
             locale: "zh-tw",
-            events: "/getActivity"
+            events: "/getActivity",
+            eventLimit: 4,
+            eventRender: function (info) {
+                let r = randomInt(0, 255);
+                let g = randomInt(0, 255);
+                let b = randomInt(0, 255);
+                info.el.style.background = `rgb(${r}, ${g}, ${b})`;
+            }
         });
         calendar.render();
     });

@@ -110,10 +110,25 @@ TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
+DATETIME_INPUT_FORMATS = (
+    '%Y-%m-%dT%H:%M',
+    '%Y-%m-%d %H:%M:%S',
+    '%Y-%m-%d %H:%M:%S.%f',
+    '%Y-%m-%d %H:%M',
+    '%Y-%m-%d',
+    '%m/%d/%Y %H:%M:%S',
+    '%m/%d/%Y %H:%M:%S.%f',
+    '%m/%d/%Y %H:%M',
+    '%m/%d/%Y',
+    '%m/%d/%y %H:%M:%S',
+    '%m/%d/%y %H:%M:%S.%f',
+    '%m/%d/%y %H:%M',
+    '%m/%d/%y'
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
