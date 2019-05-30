@@ -13,7 +13,7 @@
                     <a class="nav-link" href="/activity/create">新增活動</a>
                 </li>
                 {% endif %}
-                {% if user == activity.author or is_admin%}
+                {% if user == activity.author or is_admin %}
                     {% if perms.act.change_activity %}
                     <li class="nav-item">
                         <a class="nav-link" href="/activity/{{ activity.id }}/edit">修改此活動</a>
